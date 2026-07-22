@@ -1,237 +1,626 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DINIS CARVALHO SOLUTIONS | Soluções Digitais, Bots e Websites</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-slate-950 text-slate-100 scroll-smooth antialiased">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinis Carvalho Solutions | Bots e Sites</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --surface: rgba(15, 24, 57, 0.92);
+      --surface-strong: rgba(12, 18, 37, 0.98);
+      --blue: #5a7cff;
+      --purple: #9a5bff;
+      --cyan: #6be0ff;
+      --text: #f7f7ff;
+      --muted: #b8c0ff;
+      --accent: #7d8cff;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 30px 80px rgba(19, 27, 64, 0.35);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/70 border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-lg font-bold tracking-wider uppercase bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                DINIS CARVALHO SOLUTIONS
-            </a>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
-                <a href="#sobre" class="hover:text-white transition">Sobre</a>
-                <a href="#servicos" class="hover:text-white transition">Serviços</a>
-                <a href="#vantagens" class="hover:text-white transition">Vantagens</a>
-                <a href="#planos" class="hover:text-white transition">Planos</a>
-            </nav>
-            <a href="https://discord.gg/NEC7zH2Av3" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-indigo-600/20">
-                Entrar no Discord
-            </a>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(90, 124, 255, 0.28), transparent 30%),
+                  radial-gradient(circle at bottom right, rgba(154, 91, 255, 0.2), transparent 25%),
+                  linear-gradient(180deg, #0b1220 0%, #090d1b 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 80px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      padding: 32px 0 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 4px;
+    }
+
+    .brand-text strong {
+      font-size: 1.1rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      padding: 40px 0 20px;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(90, 124, 255, 0.16);
+      border: 1px solid rgba(90, 124, 255, 0.32);
+      color: var(--cyan);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: clamp(2.75rem, 4vw, 4.5rem);
+      margin: 0 0 24px;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      color: white;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 640px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+      min-width: 180px;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(90, 124, 255, 0.25);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: white;
+      border-color: transparent;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .hero-visual {
+      display: grid;
+      gap: 18px;
+      padding: 18px;
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .card-stat {
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(90, 124, 255, 0.12), rgba(154, 91, 255, 0.08));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-row span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: white;
+    }
+
+    .badge-list {
+      display: grid;
+      gap: 10px;
+      padding-top: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .section {
+      margin-top: 48px;
+      padding: 24px 24px 12px;
+      background: rgba(11, 18, 32, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.85rem, 2.5vw, 2.5rem);
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .price-card,
+    .feature-card {
+      border-radius: 28px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(14, 21, 43, 0.9), rgba(18, 26, 50, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+    }
+
+    .price-card.popular {
+      background: linear-gradient(180deg, rgba(90, 124, 255, 0.14), rgba(121, 84, 255, 0.1));
+      border: 1px solid rgba(90, 124, 255, 0.22);
+    }
+
+    .price-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .price-card strong {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 2rem;
+      color: var(--blue);
+    }
+
+    .price-card p,
+    .feature-card p,
+    .feature-card li {
+      color: var(--muted);
+    }
+
+    .price-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .price-card li::before {
+      content: "•";
+      margin-right: 8px;
+      color: var(--purple);
+    }
+
+    .badge-note {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(90, 124, 255, 0.12);
+      color: var(--cyan);
+      font-size: 0.95rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-card h4 {
+      font-size: 1.1rem;
+      color: white;
+    }
+
+    .feature-card li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-card li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 700;
+      min-width: 20px;
+      display: inline-flex;
+      justify-content: center;
+    }
+
+    .grid-two {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 28px 22px;
+      border-radius: 28px;
+      background: rgba(11, 18, 32, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 18px;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .footer-row span {
+      color: var(--muted);
+    }
+
+    .cta-banner {
+      display: grid;
+      gap: 18px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(90, 124, 255, 0.16), rgba(154, 91, 255, 0.1));
+      border: 1px solid rgba(90, 124, 255, 0.18);
+    }
+
+    .cta-banner h3 {
+      margin: 0;
+      font-size: 1.7rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .pricing-grid,
+      .grid-two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        width: min(100%, calc(100% - 24px));
+        padding: 24px 0 60px;
+      }
+
+      header {
+        padding: 20px 0 10px;
+      }
+
+      .brand-text strong {
+        font-size: 1rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-mark">DC</div>
+        <div class="brand-text">
+          <strong>Dinis Carvalho Solutions</strong>
+          <span>Bots e Sites sob medida</span>
         </div>
+      </div>
+      <nav class="nav">
+        <a href="#bots">Bots</a>
+        <a href="#sites">Sites</a>
+        <a href="#precos">Preços</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </header>
 
-    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-6 pt-12">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
-            <div class="absolute top-12 left-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-[100px]"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]"></div>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Bots, sites e atendimento que crescem com você</span>
+        <h1>Transforme sua ideia em um bot ou site profissional com entrega ágil.</h1>
+        <p>Na Dinis Carvalho Solutions, criamos soluções digitais bonitas, modernas e com preços que cabem no seu orçamento. Desde bots gratuitos até sites personalizados completos — o momento ideal para crescer é agora.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#precos">Ver planos</a>
+          <a class="button button-secondary" href="#contato">Fale conosco</a>
         </div>
-
-        <div class="max-w-4xl text-center z-10">
-            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse"></span>
-                Agência de Desenvolvimento Digital
-            </span>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15] bg-gradient-to-b from-white via-slate-200 to-slate-500 bg-clip-text text-transparent">
-                Transformamos ideias em <br class="hidden sm:inline">sistemas digitais inteligentes
-            </h1>
-            <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Criamos bots personalizados para Discord e websites modernos que ajudam projetos, comunidades e empresas a crescer online.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://discord.gg/NEC7zH2Av3" target="_blank" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-8 py-4 rounded-xl transition shadow-xl shadow-indigo-600/20 text-center">
-                    Cria o Teu Futuro Digital Hoje
-                </a>
-                <a href="#servicos" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-8 py-4 rounded-xl border border-slate-800 transition text-center">
-                    Conhecer Serviços
-                </a>
-            </div>
+      </div>
+      <div class="hero-visual">
+        <div class="card-stat">
+          <div class="stat-row">
+            <span>Planos acessíveis</span>
+            <span>Desde R$ 15</span>
+          </div>
+          <div class="stat-value">Bots & Sites</div>
+          <div class="badge-list">
+            <span class="badge">Bots grátis disponíveis</span>
+            <span class="badge">Sites responsivos e rápidos</span>
+            <span class="badge">Entrega rápida e suporte no Discord</span>
+          </div>
         </div>
+        <div class="cta-banner">
+          <h3>Grátis e econômico</h3>
+          <p>Oferecemos bots gratuitos e planos iniciais com valor justo para quem está começando. Aproveite um serviço profissional sem estourar o orçamento.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="sobre" class="py-24 border-t border-slate-900 bg-slate-900/20">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-indigo-400">Sobre a Empresa</span>
-                <h2 class="text-3xl font-bold tracking-tight text-white mt-2 mb-6">Construímos e escalamos o teu projeto online</h2>
-                <p class="text-slate-400 leading-relaxed mb-6">
-                    A <strong>DINIS CARVALHO SOLUTIONS</strong> é uma agência de desenvolvimento digital focada em criar soluções eficientes, modernas e acessíveis. O nosso objetivo é simples: entregar qualidade profissional para que possas focar-te no que mais importa.
-                </p>
-                <div class="border-l-2 border-indigo-500 pl-4 italic text-slate-300 text-sm">
-                    "Ajudamos-te a construir e escalar o teu projeto online com qualidade profissional."
-                </div>
-            </div>
-            <div class="bg-slate-900/60 border border-slate-800 p-8 rounded-2xl space-y-4">
-                <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wider">Especialidades do nosso ecossistema:</h3>
-                <div class="flex items-start gap-3">
-                    <span class="text-indigo-400 mt-1">✦</span>
-                    <p class="text-slate-400 text-sm"><strong class="text-slate-200">Bots para Discord:</strong> Automação inteligente e gestão de comunidades.</p>
-                </div>
-                <div class="flex items-start gap-3">
-                    <span class="text-indigo-400 mt-1">✦</span>
-                    <p class="text-slate-400 text-sm"><strong class="text-slate-200">Websites Profissionais:</strong> Interfaces responsivas, rápidas e otimizadas.</p>
-                </div>
-                <div class="flex items-start gap-3">
-                    <span class="text-indigo-400 mt-1">✦</span>
-                    <p class="text-slate-400 text-sm"><strong class="text-slate-200">Automação de Sistemas:</strong> Ferramentas digitais desenhadas à medida.</p>
-                </div>
-            </div>
+    <section class="section" id="precos">
+      <div class="section-title">
+        <div>
+          <h2>✅ Nossos planos e preços</h2>
+          <p>Escolha o plano certo para seu servidor ou site e avance hoje mesmo com uma solução confiável.</p>
         </div>
+      </div>
+
+      <div class="grid pricing-grid">
+        <article class="price-card">
+          <h3>Bot Básico</h3>
+          <strong>R$ 15</strong>
+          <p>Perfeito para iniciar com ferramentas simples e interação em Discord.</p>
+          <ul>
+            <li>Bot simples com comandos básicos</li>
+            <li>Instalação rápida</li>
+            <li>Suporte via Discord</li>
+          </ul>
+          <span class="badge-note">Ideal para quem quer começar hoje.</span>
+        </article>
+
+        <article class="price-card popular">
+          <h3>Bot Standard</h3>
+          <strong>R$ 30</strong>
+          <p>O melhor custo-benefício para servidores que precisam de automação e controle.</p>
+          <ul>
+            <li>Tickets e moderação</li>
+            <li>Logs e comandos personalizados</li>
+            <li>Configuração segura e eficiente</li>
+          </ul>
+          <span class="badge-note">Plano mais procurado.</span>
+        </article>
+
+        <article class="price-card">
+          <h3>Bot Premium</h3>
+          <strong>R$ 50</strong>
+          <p>Máxima personalização com recursos avançados para servidores profissionais.</p>
+          <ul>
+            <li>Economia, whitelist e base de dados</li>
+            <li>Integração com APIs</li>
+            <li>Funcionalidades sob medida</li>
+          </ul>
+          <span class="badge-note">Para bots completos e robustos.</span>
+        </article>
+      </div>
+
+      <div class="grid pricing-grid" style="margin-top: 32px;">
+        <article class="price-card">
+          <h3>Site Básico</h3>
+          <strong>R$ 20</strong>
+          <p>Landing page atrativa para apresentar sua ideia com estilo e clareza.</p>
+          <ul>
+            <li>Design responsivo</li>
+            <li>Uma página moderna</li>
+            <li>Otimizado para mobile</li>
+          </ul>
+          <span class="badge-note">Perfeito para divulgação rápida.</span>
+        </article>
+
+        <article class="price-card popular">
+          <h3>Site Standard</h3>
+          <strong>R$ 40</strong>
+          <p>Até 5 páginas completas com formulário de contato para converter visitantes.</p>
+          <ul>
+            <li>Design personalizado</li>
+            <li>Formulário de contato</li>
+            <li>Estrutura clara e profissional</li>
+          </ul>
+          <span class="badge-note">Mais indicado para negócios em crescimento.</span>
+        </article>
+
+        <article class="price-card">
+          <h3>Site Premium</h3>
+          <strong>R$ 70</strong>
+          <p>Site completo e personalizado, preparado para sua marca ganhar peso online.</p>
+          <ul>
+            <li>Layout exclusivo</li>
+            <li>Funcionalidades extras</li>
+            <li>Apresentação proﬁssional</li>
+          </ul>
+          <span class="badge-note">A solução completa para sua presença digital.</span>
+        </article>
+      </div>
+
+      <div class="section" style="margin-top: 32px;">
+        <div class="section-title">
+          <h2>⚙️ Extras</h2>
+        </div>
+        <div class="feature-list">
+          <div class="feature-card">
+            <h4>Adicionais que deixam tudo ainda melhor</h4>
+            <ul>
+              <li>Comando adicional – R$ 3</li>
+              <li>Embed personalizada – R$ 3</li>
+              <li>Atualização de bot – R$ 5</li>
+              <li>Página extra – R$ 5</li>
+              <li>Entrega prioritária – +R$ 10</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="servicos" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-xs font-bold uppercase tracking-widest text-purple-400">O que fazemos</span>
-            <h2 class="text-3xl font-bold tracking-tight text-white mt-2 mb-4">Os Nossos Serviços</h2>
-            <p class="text-slate-400 text-sm sm:text-base">Desenvolvemos ferramentas robustas e websites otimizados para garantir o teu sucesso digital.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div class="bg-slate-900/40 border border-slate-900 p-8 rounded-2xl hover:bg-slate-900/80 hover:border-slate-800 transition duration-300">
-                <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">🤖</div>
-                <h3 class="text-xl font-bold text-white mb-4">Bots para Discord</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">Criamos bots completos e personalizados para qualquer tipo de servidor, garantindo máxima interatividade.</p>
-                <ul class="grid grid-cols-2 gap-3 text-xs text-slate-300 border-t border-slate-800/60 pt-4">
-                    <li class="flex items-center gap-2">🔹 Moderação Automática</li>
-                    <li class="flex items-center gap-2">🔹 Tickets & Suporte</li>
-                    <li class="flex items-center gap-2">🔹 Economia & Níveis</li>
-                    <li class="flex items-center gap-2">🔹 Automação Geral</li>
-                </ul>
-            </div>
-
-            <div class="bg-slate-900/40 border border-slate-900 p-8 rounded-2xl hover:bg-slate-900/80 hover:border-slate-800 transition duration-300">
-                <div class="w-10 h-10 bg-purple-500/10 text-purple-400 rounded-lg flex items-center justify-center mb-6 font-bold text-xl">🌐</div>
-                <h3 class="text-xl font-bold text-white mb-4">Criação de Websites</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">Desenvolvemos websites modernos, limpos e totalmente otimizados para motores de busca (SEO).</p>
-                <ul class="grid grid-cols-2 gap-3 text-xs text-slate-300 border-t border-slate-800/60 pt-4">
-                    <li class="flex items-center gap-2">🔹 Design Responsivo</li>
-                    <li class="flex items-center gap-2">🔹 Landing Pages/Portfólios</li>
-                    <li class="flex items-center gap-2">🔹 Integração Discord/APIs</li>
-                    <li class="flex items-center gap-2">🔹 Alta Performance</li>
-                </ul>
-            </div>
-        </div>
+    <section class="section" id="bots">
+      <div class="section-title">
+        <h2>🤖 Bots para Discord</h2>
+      </div>
+      <p>Oferecemos bots prontos para uso, desde alternativas gratuitas até sistemas avançados com automação, economia e segurança. Se você quer ganhar confiança no Discord, temos a solução ideal.</p>
     </section>
 
-    <section id="vantagens" class="py-24 bg-slate-900/10 border-t border-slate-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Diferencial</span>
-                <h2 class="text-3xl font-bold tracking-tight text-white mt-2">Porquê escolher-nos?</h2>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="p-6 bg-slate-900/40 border border-slate-900/60 rounded-xl flex gap-4">
-                    <span class="text-emerald-400 font-bold">✔</span>
-                    <div>
-                        <h4 class="font-semibold text-white text-sm mb-1">Design moderno e profissional</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Interfaces limpas alinhadas com as tendências do mercado SaaS.</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-slate-900/40 border border-slate-900/60 rounded-xl flex gap-4">
-                    <span class="text-emerald-400 font-bold">✔</span>
-                    <div>
-                        <h4 class="font-semibold text-white text-sm mb-1">Soluções personalizadas</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Cada linha de código é feita à medida das necessidades do teu negócio.</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-slate-900/40 border border-slate-900/60 rounded-xl flex gap-4">
-                    <span class="text-emerald-400 font-bold">✔</span>
-                    <div>
-                        <h4 class="font-semibold text-white text-sm mb-1">Suporte rápido e direto</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Sem burocracias. Atendimento ágil e focado em resolver problemas.</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-slate-900/40 border border-slate-900/60 rounded-xl flex gap-4">
-                    <span class="text-emerald-400 font-bold">✔</span>
-                    <div>
-                        <h4 class="font-semibold text-white text-sm mb-1">Experiência em ecossistemas</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Domínio completo da API do Discord e integrações web.</p>
-                    </div>
-                </div>
-                <div class="p-6 bg-slate-900/40 border border-slate-900/60 rounded-xl flex gap-4">
-                    <span class="text-emerald-400 font-bold">✔</span>
-                    <div>
-                        <h4 class="font-semibold text-white text-sm mb-1">Crescimento real</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed">Sistemas desenhados para reter utilizadores e captar clientes.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="section" id="sites">
+      <div class="section-title">
+        <h2>🌐 Websites</h2>
+      </div>
+      <p>Crie uma presença online forte com um site personalizado. Temos opções de landing page, sites multi-páginas e projetos completos criados com foco em usabilidade e conversão.</p>
     </section>
 
-    <section id="planos" class="py-24 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Preços</span>
-                <h2 class="text-3xl font-bold tracking-tight text-white mt-2 mb-4">Planos Flexíveis</h2>
-                <p class="text-slate-400 text-sm">Escolhe a estrutura ideal para dar os próximos passos com segurança.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto items-stretch">
-                <div class="bg-slate-900/30 border border-slate-900 p-8 rounded-2xl flex flex-col justify-between hover:border-slate-800 transition">
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-xs font-semibold text-slate-400 bg-slate-800 px-2.5 py-1 rounded-md">🆓 Plano Gratuito</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Free Plan</h3>
-                        <p class="text-xs text-slate-400 mb-6">Ideal para validar ideias e dar vida a novas comunidades que estão a começar.</p>
-                        <div class="h-px bg-slate-800/60 my-6"></div>
-                        <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2 text-emerald-400">✔ Website básico gratuito</li>
-                            <li class="flex items-center gap-2 text-emerald-400">✔ Bot simples para Discord</li>
-                            <li class="flex items-center gap-2 text-slate-500">❌ Sem design exclusivo ou suporte prioritário</li>
-                        </ul>
-                    </div>
-                    <a href="https://discord.gg/kQFNMqPpv" target="_blank" class="block text-center mt-8 bg-slate-800 hover:bg-slate-700 text-white py-3 rounded-xl text-xs font-medium transition">Começar Grátis</a>
-                </div>
-
-                <div class="bg-slate-900/90 border-2 border-indigo-500 p-8 rounded-2xl flex flex-col justify-between relative shadow-xl shadow-indigo-500/5">
-                    <div>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-xs font-semibold text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">💎 Premium</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Premium Plan</h3>
-                        <p class="text-xs text-slate-400 mb-6">Soluções avançadas criadas sob medida para quem quer um projeto sério e de alta performance.</p>
-                        <div class="h-px bg-slate-800/60 my-6"></div>
-                        <ul class="space-y-3 text-xs text-slate-300">
-                            <li class="flex items-center gap-2 text-indigo-400">✔ Bots completos e totalmente personalizados</li>
-                            <li class="flex items-center gap-2 text-indigo-400">✔ Websites profissionais com design exclusivo</li>
-                            <li class="flex items-center gap-2 text-indigo-400">✔ Suporte e atualizações contínuas</li>
-                            <li class="flex items-center gap-2 text-indigo-400">✔ Maior performance e funcionalidades</li>
-                        </ul>
-                    </div>
-                    <a href="https://discord.gg/kQFNMqPpv" target="_blank" class="block text-center mt-8 bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl text-xs font-medium transition shadow-lg shadow-indigo-600/20">Solicitar Solução Premium</a>
-                </div>
-            </div>
+    <section class="section" id="contato">
+      <div class="section-title">
+        <h2>💳 Pagamento e contato</h2>
+      </div>
+      <p>Pagamento via PIX. Atendimento rápido pelo Discord para tirar dúvidas, receber orçamento e contratar seu bot ou site agora mesmo.</p>
+      <div class="grid grid-two" style="margin-top: 18px; gap: 20px;">
+        <div class="feature-card">
+          <h4>Forma de pagamento</h4>
+          <p>✅ PIX</p>
+          <p>Preço justo, transparência total e promoções especiais para novos clientes.</p>
         </div>
+        <div class="feature-card">
+          <h4>Discord</h4>
+          <p><a href="https://discord.gg/djcyHhzMEz" target="_blank" rel="noopener">https://discord.gg/djcyHhzMEz</a></p>
+          <p>Converse pelo Discord para receber suporte imediato, detalhes do projeto e contratação.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="py-24 border-t border-slate-900 bg-gradient-to-b from-transparent to-slate-900/50 text-center px-6">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl font-bold text-white mb-4">Queres um bot ou website profissional para o teu projeto?</h2>
-            <p class="text-slate-400 text-sm sm:text-base mb-8">Nós criamos tudo por ti — rápido, moderno e personalizado.</p>
-            
-            <div class="inline-flex flex-col items-center gap-4">
-                <a href="https://discord.gg/NEC7zH2Av3" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-8 py-3.5 rounded-xl transition shadow-xl shadow-indigo-600/20 text-sm">
-                    👉 Entrar no Discord da DINIS CARVALHO SOLUTIONS
-                </a>
-                <span class="text-xs text-slate-500 tracking-wide uppercase mt-2">DINIS CARVALHO SOLUTIONS — Cria o teu futuro digital hoje.</span>
-            </div>
+    <footer>
+      <div class="footer-row">
+        <div>
+          <strong>Dinis Carvalho Solutions</strong>
+          <p>Bots e sites a sua medida para quem quer crescer com tecnologia e estilo.</p>
         </div>
-    </section>
-
-    <footer class="py-8 border-t border-slate-900/60 text-center text-[11px] text-slate-600 tracking-wider">
-        <p>&copy; 2026 DINIS CARVALHO SOLUTIONS. Todos os direitos reservados.</p>
+        <span>Preços promocionais para conquistar novos clientes.</span>
+      </div>
+      <div class="footer-row">
+        <span>Discord: <a href="https://discord.gg/djcyHhzMEz" target="_blank" rel="noopener">Clique aqui</a></span>
+      </div>
     </footer>
-
+  </div>
 </body>
 </html>
